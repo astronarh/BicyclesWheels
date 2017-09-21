@@ -2,19 +2,21 @@ import java.io.*;
 import java.sql.*;
 
 public class ReadFile {
+    private static String last = "SELECT * FROM bicycles ORDER BY id DESC LIMIT 1;";
 
     public static void read() {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/forjava?user=root&password=");) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from bicycles where id=7");
+            ResultSet resultSet = statement.executeQuery(last);
             if (resultSet.next()) {
-                String name = resultSet.getString("file_name");
-                Blob file = resultSet.getBlob("file_contents");
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("user");
+                Blob file = resultSet.getBlob("file");
                 InputStream x = file.getBinaryStream();
                 int size = x.available();
                 byte b[] = new byte[size];
                 x.read(b);
-                try (OutputStream targetFile = new FileOutputStream("C:\\Users\\Nurzhan\\Desktop\\Новая папка\\" + name)) {
+                try (OutputStream targetFile = new FileOutputStream("D:\\projects\\Bicycles&Wheels\\src\\main\\java\\files\\" + name)) {
                     targetFile.write(b);
                 } catch (IOException e) {
                     e.printStackTrace();
