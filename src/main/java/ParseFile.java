@@ -17,7 +17,7 @@ public class ParseFile {
 
         System.out.println(newCommentList);
 
-        Map<String, File> fileMap = ReadFile.read();
+        Map<String, File> fileMap = ReadFileFromSQL.read();
         try (Scanner scanner = new Scanner(fileMap.get("comments"))) {
             while (scanner.hasNext()) {
                 String lineString = scanner.nextLine().trim();
@@ -34,7 +34,7 @@ public class ParseFile {
 
         System.out.println(presentCommentList);
 
-        LoadFile.load(file.getPath(), "D:\\projects\\Bicycles&Wheels\\src\\main\\java\\files\\comments.txt", "user");
+        LoadFileToSQL.load(file.getPath(), "D:\\projects\\Bicycles&Wheels\\src\\main\\java\\files\\comments.txt", "user");
 
         fileMap.get("file").deleteOnExit();
         fileMap.get("comments").deleteOnExit();

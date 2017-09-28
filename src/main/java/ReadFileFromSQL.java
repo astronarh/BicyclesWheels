@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReadFile {
+public class ReadFileFromSQL {
     private static String last = "SELECT * FROM bicycles ORDER BY id DESC LIMIT 1;";
 
     public static Map<String, File> read() {
@@ -34,16 +34,11 @@ public class ReadFile {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                /*try (OutputStream targetFile = new FileOutputStream("D:\\projects\\Bicycles&Wheels\\src\\main\\java\\files\\" + name)) {
-                    targetFile.write(b);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
             }
             return fileMap;
         } catch (SQLException | IOException e) {
             e.printStackTrace();
+            return fileMap;
         }
-        return fileMap;
     }
 }

@@ -6,4 +6,5 @@ import java.util.Calendar;
 
 class WorkingSQL {          //astronarh//Some comment
                             //user1//New comment
+                            //thisDate//Comment new
 }                           //guest//This is the end

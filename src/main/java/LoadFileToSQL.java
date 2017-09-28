@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
 
-public class LoadFile {
+public class LoadFileToSQL {
     private static String createTable = "CREATE TABLE IF NOT EXISTS bicycles (" +
             "id integer primary key auto_increment, " +
             "datetime datetime, " +
